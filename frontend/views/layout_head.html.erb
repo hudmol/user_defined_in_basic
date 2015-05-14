@@ -1,1 +1,3 @@
-<%= javascript_include_tag "#{AppConfig[:frontend_prefix]}assets/user_defined_in_basic.js" %>
+<% if AppConfig.has_key?(:user_defined_in_basic) %>
+  <%= javascript_include_tag "#{AppConfig[:frontend_prefix]}assets/user_defined_in_basic.js" %>
+<% end %>
