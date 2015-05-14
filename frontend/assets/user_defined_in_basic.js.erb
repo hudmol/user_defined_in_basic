@@ -27,11 +27,27 @@ function init() {
 
   var fields = {};
   <% ['accession', 'digital_object', 'resource'].each do |rec| %>
-    fields['<%= rec %>'] = [];
-    <% AppConfig[:user_defined_in_basic][rec].each do |fld| %>
-      fields['<%= rec %>'].push('<%= fld %>');
+    <% if AppConfig[:user_defined_in_basic].has_key?(rec) %>
+      fields['<%= rec %>'] = [];
+      <% AppConfig[:user_defined_in_basic][rec].each do |fld| %>
+        fields['<%= rec %>'].push('<%= fld %>');
+      <% end %>
     <% end %>
   <% end %>
+
+  if (fields[record_type] == null) {
+    return;
+  }
+
+  // add user defined if necessary, and disable remove button
+  var remove_btn = $('#'+record_type+'_user_defined_').find('.subrecord-form-remove');
+  if (remove_btn.length == 0) {
+    $('#'+record_type+'_user_defined_').find('.btn-default').filter(':visible').click();
+    $('#'+record_type+'_user_defined_').find('.subrecord-form-remove').attr('disabled', 'disabled');
+    window.scrollTo(0,0);
+  } else {
+    remove_btn.attr('disabled', 'disabled');
+  }
 
   for (i = 0; i < fields[record_type].length; i++) {
     var field = fields[record_type][i];
