@@ -1,0 +1,14 @@
+<%
+  section_id = "user_defined" if section_id.blank?
+ 
+%>
+
+<section id="<%= section_id %>" class="subrecord-form-dummy">
+  <h3><%= I18n.t("user_defined._singular") %></h3>
+
+  <div class="subrecord-form-container">
+    <div class="subrecord-form-fields">
+      <%= awesomer_read_only_view(user_defined, 'parent' => context['jsonmodel_type']) %>
+    </div>
+  </div>
+</section>
