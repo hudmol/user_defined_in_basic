@@ -46,13 +46,10 @@ for `digital_objects` (because the field list is empty), but the presence of the
 `digital_objects` key guarantees the addition of a `user_defined` subrecord. To
 disable this behavior, simply remove the key.
 
-For each record type, specify the `user_defined` fields that you would like to
-see in the `Basic Information`.
+For each record type, specify a list of `user_defined` fields that you would like
+to see in the `Basic Information`. The fields specified will be moved to the
+`Basic Information` section and will appear in the order specified.
 
-The fields specified will be moved to the `Basic Information` section and will
-appear in the order specified.
-
-If you specify a key other than the three record types supported, or a field
-that doesn't exist in the `user_defined` record, a warning will be logged at
-startup.
+If you specify a field that doesn't exist in the `user_defined` record,
+a warning will be logged at startup.
 
