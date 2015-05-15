@@ -27,23 +27,23 @@ https://github.com/hudmol/user_defined_in_basic/releases
 Add an entry to your `config.rb` like this:
 
      AppConfig[:user_defined_in_basic] = {
-       'accession' => ['boolean_1', 'enum_2', 'real_2'],
-       'digital_object' => [],
-       'resource' => ['string_2', 'date_1', 'boolean_1']
+       'accessions' => ['boolean_1', 'enum_2', 'real_2'],
+       'digital_objects' => [],
+       'resources' => ['string_2', 'date_1', 'boolean_1']
      }
 
 If you don't have a `:user_defined_in_basic` entry the plugin won't do anything.
 It will log a warning at startup.
 
-The three keys shown (`accession`, `resource`, and `digital_object`) are the
+The three keys shown (`accessions`, `resources`, and `digital_objects`) are the
 record types that can have a `user_defined` subrecord. For each key specified
 a `user_defined` subrecord will be automatically added when a new record
 is created through the staff UI, or will be added to an existing record when
 it is edited if it doesn't already have one. Also, the remove button is disabled.
 
 So, in the example shown, no fields are moved to the `Basic Information` section
-for `digital_object` (because the field list is empty), but the presence of the
-`digital_object` key guarantees the addition of a `user_defined` subrecord. To
+for `digital_objects` (because the field list is empty), but the presence of the
+`digital_objects` key guarantees the addition of a `user_defined` subrecord. To
 disable this behavior, simply remove the key.
 
 For each record type, specify the `user_defined` fields that you would like to
