@@ -15,7 +15,7 @@ UserDefinedInBasic.prototype.init = function(fields, read_only_view) {
     var remove_btn = user_defined_section.find('.subrecord-form-remove');
     if (remove_btn.length == 0) {
         user_defined_section.find('.btn-default').filter(':visible').click();
-        remove_btn.attr('disabled', 'disabled');
+        user_defined_section.find('.subrecord-form-remove').attr('disabled', 'disabled');
         window.scrollTo(0,0);
     } else {
         remove_btn.attr('disabled', 'disabled');
