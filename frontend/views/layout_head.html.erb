@@ -10,13 +10,16 @@ end
     <%= javascript_include_tag "#{AppConfig[:frontend_prefix]}assets/user_defined_in_basic.js" %>
 
     <script>
-     var record_type = '<%= controller.controller_name %>';
      var fields = <%= ASUtils.to_json(map_user_defined_to_labels(AppConfig[:user_defined_in_basic].fetch(controller.controller_name, []))).html_safe %>;
      var read_only_view = <%= controller.action_name == 'show' %>;
      
      var init = function () {
+         // Funny setTimeout here to move our initialization to the
+         // end of the page load.  We need this to run after the user
+         // defined field subform is in and its buttons have been wired
+         // up.
          setTimeout(function () {
-             new UserDefinedInBasic().init(record_type, fields, read_only_view);
+             new UserDefinedInBasic().init(fields, read_only_view);
          }, 0);
      }
 

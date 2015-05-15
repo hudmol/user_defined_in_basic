@@ -1,8 +1,5 @@
 <%
   section_id = "user_defined" if section_id.blank?
-  if !defined?(context) || !context
-      context = {}
-  end
 %>
 
 <section id="<%= section_id %>" class="subrecord-form-dummy">
@@ -10,7 +7,7 @@
 
   <div class="subrecord-form-container">
     <div class="subrecord-form-fields">
-      <%= read_only_view(user_defined, 'parent' => context['jsonmodel_type']) %>
+      <%= read_only_view(user_defined) %>
     </div>
   </div>
 </section>

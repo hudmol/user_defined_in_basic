@@ -1,7 +1,7 @@
 function UserDefinedInBasic() {
 }
 
-UserDefinedInBasic.prototype.init = function(record_type, fields, read_only_view) {
+UserDefinedInBasic.prototype.init = function(fields, read_only_view) {
     var bi = $("#basic_information");
 
     if (bi.length == 0) {
