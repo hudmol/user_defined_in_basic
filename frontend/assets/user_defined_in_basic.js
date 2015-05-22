@@ -1,7 +1,7 @@
 function UserDefinedInBasic() {
 }
 
-UserDefinedInBasic.prototype.init = function(fields, read_only_view) {
+UserDefinedInBasic.prototype.init = function(fields, read_only_view, hide_user_defined_section) {
     var bi = $("#basic_information");
 
     if (bi.length == 0) {
@@ -15,10 +15,20 @@ UserDefinedInBasic.prototype.init = function(fields, read_only_view) {
     var remove_btn = user_defined_section.find('.subrecord-form-remove');
     if (remove_btn.length == 0) {
         user_defined_section.find('.btn-default').filter(':visible').click();
-        user_defined_section.find('.subrecord-form-remove').attr('disabled', 'disabled');
         window.scrollTo(0,0);
+    }
+
+    // hide the remains of the user defined section if configured thus
+    if (hide_user_defined_section) {
+	if (read_only_view) {
+	    $('section[id$=_user_defined_]').hide();
+	} else {
+	    user_defined_section.hide();
+	}
     } else {
-        remove_btn.attr('disabled', 'disabled');
+	if (!read_only_view) {
+	    user_defined_section.find('.subrecord-form-remove').attr('disabled', 'disabled');
+	}
     }
 
     fields.map(function (field) {

@@ -29,13 +29,14 @@ Add an entry to your `config.rb` like this:
      AppConfig[:user_defined_in_basic] = {
        'accessions' => ['boolean_1', 'enum_2', 'real_2'],
        'digital_objects' => [],
-       'resources' => ['string_2', 'date_1', 'boolean_1']
+       'resources' => ['string_2', 'date_1', 'boolean_1'],
+       'hide_user_defined_section' => true
      }
 
 If you don't have a `:user_defined_in_basic` entry the plugin won't do anything.
 It will log a warning at startup.
 
-The three keys shown (`accessions`, `resources`, and `digital_objects`) are the
+The three keys, `accessions`, `resources`, and `digital_objects`, are the
 record types that can have a `user_defined` subrecord. For each key specified
 a `user_defined` subrecord will be automatically added when a new record
 is created through the staff UI, or will be added to an existing record when
@@ -53,3 +54,8 @@ to see in the `Basic Information`. The fields specified will be moved to the
 If you specify a field that doesn't exist in the `user_defined` record,
 a warning will be logged at startup.
 
+The `hide_user_defined_section` key is optional. If specified with a value of
+`true`, then the User Defined section will be hidden in View and Edit modes.
+This will give a cleaner display, but it means it will only be possible to
+edit the user defined fields that have been moved to the Basic Information
+section.
