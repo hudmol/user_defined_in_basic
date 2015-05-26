@@ -20,13 +20,11 @@ UserDefinedInBasic.prototype.init = function(fields, read_only_view, hide_user_d
 
     // hide the remains of the user defined section if configured thus
     if (hide_user_defined_section) {
-	if (read_only_view) {
-	    $('section[id$=_user_defined_]').hide();
-	} else {
-	    user_defined_section.hide();
-	}
+	$('section[id$=_user_defined_]').hide();
+	$('li[class^=sidebar-entry][class$=user_defined_]').hide();
     } else {
 	if (!read_only_view) {
+	    // if we're not hiding then disable the remove button
 	    user_defined_section.find('.subrecord-form-remove').attr('disabled', 'disabled');
 	}
     }
