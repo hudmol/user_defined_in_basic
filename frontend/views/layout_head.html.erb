@@ -1,7 +1,7 @@
 <%
 
-def map_user_defined_to_labels(properties)
-  properties.map {|property| I18n.t("user_defined.#{property}")}
+def map_user_defined_to_labels(model, properties)
+  properties.map {|property| I18n.t("#{model}.user_defined.#{property}")}
 end
 
 %>
@@ -10,7 +10,8 @@ end
     <%= javascript_include_tag "#{AppConfig[:frontend_proxy_prefix]}assets/user_defined_in_basic.js" %>
 
     <script>
-     var fields = <%= ASUtils.to_json(map_user_defined_to_labels(AppConfig[:user_defined_in_basic].fetch(controller.controller_name, []))).html_safe %>;
+     var fields = <%= ASUtils.to_json(map_user_defined_to_labels(controller.controller_name.sub(/s$/, ''),
+                                                                 AppConfig[:user_defined_in_basic].fetch(controller.controller_name, []))).html_safe %>;
      var read_only_view = <%= controller.action_name == 'show' %>;
      var hide_user_defined_section = <%= AppConfig[:user_defined_in_basic]['hide_user_defined_section'] %>;
 
