@@ -26,12 +26,14 @@ end
      }
 
      // For Resource record updates
-     $(document).bind("loadedrecordform.aspace", init);
+     $(document).on("loadedrecordform.aspace", init);
 
      // For everything else
      // had to bind this call to window load because a bare call to init()
      // was causing Firefox to jump the gun ... javascript, sheesh
-     $(window).load(init);
+     $(window).on('load', function(){
+       init
+    })
 
     </script>
 

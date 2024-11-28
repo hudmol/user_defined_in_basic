@@ -14,7 +14,7 @@ UserDefinedInBasic.prototype.init = function(fields, read_only_view, hide_user_d
     var user_defined_section = $('section.subrecord-form[data-object-name="user_defined"]');
     var remove_btn = user_defined_section.find('.subrecord-form-remove');
     if (remove_btn.length == 0) {
-        user_defined_section.find('.btn-default').filter(':visible').click();
+        user_defined_section.find('.btn-default').filter(':visible').trigger('click');
         window.scrollTo(0,0);
     }
 
